@@ -3,5 +3,5 @@ project(Shackle)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(Shackle Shackle.cpp)
+add_executable(Shackle src/ShackleMain.cpp)
 #add_subdirectory(Data)
