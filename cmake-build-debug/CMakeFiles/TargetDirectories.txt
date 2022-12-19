@@ -1,0 +1,3 @@
+D:/Develop/Shackle/cmake-build-debug/CMakeFiles/Shackle.dir
+D:/Develop/Shackle/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/Develop/Shackle/cmake-build-debug/CMakeFiles/rebuild_cache.dir
