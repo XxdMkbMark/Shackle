@@ -17,15 +17,15 @@ struct Block{
 bool opened[20][20][100];
 char str[100];
 
-void sc(int fore = 7, int back = 0){
+void sc(int fore = 7, int back = 0){ //setcolor
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), (back << 4) + fore);
 }
-void cs(){
+void cs(){ //clearscreen
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	COORD coordScreen = { 0, 0 };
 	SetConsoleCursorPosition( hConsole, coordScreen );
 }
-void hc(){
+void hc(){ //hidecursor
 	CONSOLE_CURSOR_INFO cursor_info = { 1, 0 };
 	SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &cursor_info);
 }
@@ -50,6 +50,7 @@ void readtxt(int a,int b){
 					else if(s=="ye") tb.interactive=0;
 					else if(s=="no") tb.interactive=1;
 					else if(s=="tp") cin>>t1>>t2>>t3>>t4,tb.transport[0]=t1,tb.transport[1]=t2,tb.transport[2]=t3,tb.transport[3]=t4,tb.inr_transport=1;
+					// get the code in txt
 				}
 			}
 			else tb.character=s[0];
