@@ -4,9 +4,9 @@
 using namespace std;
 
 struct Block{
-	char ch;
-	int co=7,cr=0,lo[5],ul[5],tp[5];
-	bool glo=0,gul=0,gtp=0;
+	char character;
+	int color=7,interactive=0,locked[5],unlock[5],transport[5];
+	bool inr_locked=0,inr_unlock=0,inr_transport=0;
 //	co color 0~15
 //	cr ye/no/lo 0/1/2
 //	lo a,b,c
@@ -14,7 +14,7 @@ struct Block{
 //	tp a,b,x,y
 }blo[20][20][25][25];
 
-bool op[20][20][100];
+bool opened[20][20][100];
 char str[100];
 
 void sc(int fore = 7, int back = 0){
@@ -38,21 +38,21 @@ void readtxt(int a,int b){
 	for(i=0;i<21;i++){
 		for(j=0;j<21;j++){
 			Block tb;
-			cin >> s;
+			cin>>s;
 			if(s=="/"){
-				cin >> s,tb.ch=s[0];
+				cin>>s,tb.character=s[0];
 				while(1){
-					cin >> s;
+					cin>>s;
 					if(s=="/") break;
-					else if(s=="co") cin >> t1, tb.co=t1;
-					else if(s=="lo") cin >> t1 >> t2 >> t3, tb.lo[0]=t1,tb.lo[1]=t2,tb.lo[2]=t3,tb.glo=1,tb.cr=2;
-					else if(s=="ul") cin >> t1 >> t2 >> t3, tb.ul[0]=t1,tb.ul[1]=t2,tb.ul[2]=t3,tb.gul=1;
-					else if(s=="ye") tb.cr=0;
-					else if(s=="no") tb.cr=1;
-					else if(s=="tp") cin >> t1 >> t2 >> t3 >> t4, tb.tp[0]=t1,tb.tp[1]=t2,tb.tp[2]=t3,tb.tp[3]=t4,tb.gtp=1;
+					else if(s=="co") cin>>t1,tb.color=t1;
+					else if(s=="lo") cin>>t1>>t2>>t3,tb.locked[0]=t1,tb.locked[1]=t2,tb.locked[2]=t3,tb.inr_locked=1,tb.interactive=2;
+					else if(s=="ul") cin>>t1>>t2>>t3,tb.unlock[0]=t1,tb.unlock[1]=t2,tb.unlock[2]=t3,tb.inr_unlock=1;
+					else if(s=="ye") tb.interactive=0;
+					else if(s=="no") tb.interactive=1;
+					else if(s=="tp") cin>>t1>>t2>>t3>>t4,tb.transport[0]=t1,tb.transport[1]=t2,tb.transport[2]=t3,tb.transport[3]=t4,tb.inr_transport=1;
 				}
 			}
-			else tb.ch=s[0];
+			else tb.character=s[0];
 			blo[a][b][i][j]=tb;
 		}
 	}
