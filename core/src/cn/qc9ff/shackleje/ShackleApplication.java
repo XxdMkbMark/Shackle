@@ -10,6 +10,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 
 public class ShackleApplication extends Game {
+
+	//<editor-fold desc="单例声明">
+
+	//<editor-fold>
 	public static final float WORLD_WIDTH = 1024;
 	public static final float WORLD_HEIGHT = 760;
 	private StartScreen startScreen;
