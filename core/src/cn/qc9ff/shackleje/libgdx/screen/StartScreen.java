@@ -1,6 +1,8 @@
 package cn.qc9ff.shackleje.libgdx.screen;
 
+import cn.qc9ff.shackleje.ShackleApplication;
 import cn.qc9ff.shackleje.libgdx.util.AssetsPath;
+import cn.qc9ff.shackleje.libgdx.util.ScreenType;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -57,6 +59,7 @@ public class StartScreen implements Screen {
             public void clicked(InputEvent event, float x, float y) {
                 super.clicked(event, x, y);
                 System.out.println("YEE");
+                ShackleApplication.getInstance().ChangeScreen(ScreenType.GAME);
             }
         });
         startGameButton.setWidth(200);

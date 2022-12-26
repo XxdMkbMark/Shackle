@@ -13,6 +13,6 @@ public class DesktopLauncher {
 		config.setTitle("Shackle-JEG");
 		config.setWindowIcon("icon.png");
 		config.setResizable(false);
-		new Lwjgl3Application(new ShackleApplication(), config);
+		new Lwjgl3Application(ShackleApplication.getInstance(), config);
 	}
 }

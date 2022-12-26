@@ -12,7 +12,11 @@ import com.badlogic.gdx.Screen;
 public class ShackleApplication extends Game {
 
 	//<editor-fold desc="单例声明">
-
+	private ShackleApplication(){}
+	private static ShackleApplication instance = new ShackleApplication();
+	public static ShackleApplication getInstance(){
+		return instance;
+	}
 	//<editor-fold>
 	public static final float WORLD_WIDTH = 1024;
 	public static final float WORLD_HEIGHT = 760;
