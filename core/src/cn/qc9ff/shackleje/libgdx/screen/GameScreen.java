@@ -30,7 +30,6 @@ public class GameScreen implements Screen {
     private Stage stage;
     private SpriteBatch batch;
     private TiledMap map;
-    private TmxMapLoader loader;
     private OrthogonalTiledMapRenderer renderer;
     private OrthographicCamera cam;
     //private Vector3 pot;
@@ -40,21 +39,24 @@ public class GameScreen implements Screen {
     private final Array<Rectangle> rectangleList = new Array<>();
     //<editor-fold desc="a">
 
+
+    public GameScreen(String gameMapPath) {
+        map = new TmxMapLoader().load(gameMapPath);
+    }
+
     @Override
     public void show() {
         stage = new Stage();
         Gdx.input.setInputProcessor(stage);
 
         //地图加载&渲染
-        loader = new TmxMapLoader();
-        map = loader.load("tile_map/0-1.tmx");
 
-        renderer = new OrthogonalTiledMapRenderer(map, 2f);
+        renderer = new OrthogonalTiledMapRenderer(map, 1f);
 
         //加载游戏对象
         cam = new OrthographicCamera();
         cam.setToOrtho(false, 1024, 768);
-        //cam.position.set(0, 0, 0);
+        cam.position.set(0, 0, 0);
         cam.update();
 
 //        pot = new Vector3();
@@ -169,7 +171,7 @@ public class GameScreen implements Screen {
     private void collisionTest(){
         for(Rectangle rectangle : rectangleList){
             if(CollisionUtils.isReCollision(player, rectangle)){
-                System.out.println("CCC");
+                System.out.println("Collision!");
             }
         }
     }
@@ -196,5 +198,7 @@ public class GameScreen implements Screen {
             }
         }
     }
+
+
 
 }

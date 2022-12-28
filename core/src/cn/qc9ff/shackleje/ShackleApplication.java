@@ -3,6 +3,7 @@ package cn.qc9ff.shackleje;
 import cn.qc9ff.shackleje.libgdx.screen.GameScreen;
 import cn.qc9ff.shackleje.libgdx.screen.MenuScreen;
 import cn.qc9ff.shackleje.libgdx.screen.StartScreen;
+import cn.qc9ff.shackleje.libgdx.util.AssetsPath;
 import cn.qc9ff.shackleje.libgdx.util.ScreenType;
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Game;
@@ -36,7 +37,7 @@ public class ShackleApplication extends Game {
 				break;
 			}
 			case GAME:{
-				gameScreen = new GameScreen();
+				gameScreen = new GameScreen("tile_map/0-1.tmx");
 				setScreen(gameScreen);
 				break;
 			}
