@@ -1,7 +1,7 @@
 package cn.qc9ff.shackleje.libgdx.screen;
 
-import cn.qc9ff.shackleje.level.Level;
 import cn.qc9ff.shackleje.libgdx.actor.PlayerActor;
+import cn.qc9ff.shackleje.libgdx.input.GameInputListener;
 import cn.qc9ff.shackleje.libgdx.util.AssetsPath;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -12,12 +12,11 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 public class GameScreen implements Screen {
+    private Stage stage;
     private TiledMap map;
     private TmxMapLoader loader;
     private OrthogonalTiledMapRenderer renderer;
@@ -28,6 +27,9 @@ public class GameScreen implements Screen {
 
     @Override
     public void show() {
+        stage = new Stage();
+        Gdx.input.setInputProcessor(stage);
+        stage.addListener(new GameInputListener());
         //地图加载&渲染
         loader = new TmxMapLoader();
         map = loader.load("tile_map/0-1.tmx");
@@ -44,6 +46,8 @@ public class GameScreen implements Screen {
         player = new PlayerActor(new TextureRegion(playerTexture));
         player.setPosition(150, 400);
         player.setScale(0.1f);
+
+        stage.addActor(player);
     }
 
     @Override
@@ -52,11 +56,9 @@ public class GameScreen implements Screen {
         renderer.setView(cam);
         renderer.render();
 
-        player.act(Gdx.graphics.getDeltaTime());
+        stage.act();
+        stage.draw();
 
-        batch.begin();
-        player.draw(batch, 1f);
-        batch.end();
     }
 
     @Override
