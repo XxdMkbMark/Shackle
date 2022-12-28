@@ -28,6 +28,10 @@ public class PlayerActor extends Actor {
         setSize();
     }
 
+    public void move(int ox, int oy){
+        this.setPosition(this.getX()+ox, this.getY()+oy);
+    }
+
     @Override
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);

@@ -20,6 +20,8 @@ public class ShackleApplication extends Game {
 	//<editor-fold>
 	public static final float WORLD_WIDTH = 1024;
 	public static final float WORLD_HEIGHT = 760;
+
+	public static final int PlayerMoveSpeed = 3;
 	private StartScreen startScreen;
 	private GameScreen gameScreen;
 	private MenuScreen menuScreen;
