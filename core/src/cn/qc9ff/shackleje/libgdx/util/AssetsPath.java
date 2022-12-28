@@ -13,4 +13,7 @@ public class AssetsPath {
     public static final String START_SCREEN_SETTING_BUTTON_UP = TEXTURES_PATH + "/" + START_SCREEN_PATH + "/settingButton_up.png";
     public static final String START_SCREEN_SETTING_BUTTON_DOWN = TEXTURES_PATH + "/" + START_SCREEN_PATH + "/settingButton_down.png";
 
+    public static final String GAME_SCREEN_PATH = "game_screen";
+    public static final String GAME_SCREEN_PLAYER_TEXTURE = TEXTURES_PATH + "/" + GAME_SCREEN_PATH + "/player.png";
+
 }

@@ -2,7 +2,7 @@ package cn.qc9ff.shackleje.libgdx.input;
 
 import com.badlogic.gdx.InputProcessor;
 
-public class InputHandler implements InputProcessor {
+public class GameInputHandler implements InputProcessor {
 
     @Override
     public boolean keyDown(int keycode) {

@@ -1,31 +1,49 @@
 package cn.qc9ff.shackleje.libgdx.screen;
 
 import cn.qc9ff.shackleje.level.Level;
+import cn.qc9ff.shackleje.libgdx.actor.PlayerActor;
+import cn.qc9ff.shackleje.libgdx.util.AssetsPath;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 public class GameScreen implements Screen {
-    private Level level;
-    private Stage stage;
     private TiledMap map;
     private TmxMapLoader loader;
     private OrthogonalTiledMapRenderer renderer;
     private OrthographicCamera cam;
+    private PlayerActor player;
+    private Texture playerTexture;
+    private SpriteBatch batch;
 
     @Override
     public void show() {
+        //地图加载&渲染
         loader = new TmxMapLoader();
         map = loader.load("tile_map/0-1.tmx");
+
         renderer = new OrthogonalTiledMapRenderer(map, 1f);
+
+        //加载游戏对象
         cam = new OrthographicCamera();
         cam.setToOrtho(false, 800, 600);
         cam.update();
+
+        batch = new SpriteBatch();
+        playerTexture = new Texture(Gdx.files.internal(AssetsPath.GAME_SCREEN_PLAYER_TEXTURE));
+        player = new PlayerActor(new TextureRegion(playerTexture));
+        player.setPosition(150, 400);
+        player.setScale(0.1f);
     }
 
     @Override
@@ -33,6 +51,12 @@ public class GameScreen implements Screen {
         ScreenUtils.clear(225f,225f,225f,0.4f);
         renderer.setView(cam);
         renderer.render();
+
+        player.act(Gdx.graphics.getDeltaTime());
+
+        batch.begin();
+        player.draw(batch, 1f);
+        batch.end();
     }
 
     @Override
